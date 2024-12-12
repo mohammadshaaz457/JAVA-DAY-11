@@ -1,51 +1,62 @@
-import java.util.Scanner;
-
-public class calculator {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Simple Calculator");
-        System.out.println("Select operation: ");
-        System.out.println("1. Add");
-        System.out.println("2. Subtract");
-        System.out.println("3. Multiply");
-        System.out.println("4. Divide");
-
-        int choice = scanner.nextInt();
-
-        System.out.print("Enter first number: ");
-        double num1 = scanner.nextDouble();
-        System.out.print("Enter second number: ");
-        double num2 = scanner.nextDouble();
-
-        double result = 0;
-
-        switch (choice) {
-            case 1:
-                result = num1 + num2;
-                System.out.println("Result: " + result);
-                break;
-            case 2:
-                result = num1 - num2;
-                System.out.println("Result: " + result);
-                break;
-            case 3:
-                result = num1 * num2;
-                System.out.println("Result: " + result);
-                break;
-            case 4:
-                if (num2 != 0) {
-                    result = num1 / num2;
-                    System.out.println("Result: " + result);
-                } else {
-                    System.out.println("Error: Cannot divide by zero.");
-                }
-                break;
-            default:
-                System.out.println("Invalid operation choice!");
-        }
-
-        scanner.close();
+import java.util.*;
+class caluclator{
+  public void sum(int a,int b)
+  {
+    System.out.println("Addition "+(a+b));
+  }
+  public void sub(int a,int b)
+  {
+    System.out.println("Substraction "+(a-b));
+  }
+  public void mul(int a,int b)
+  {
+    System.out.println("Multiplication "+(a*b));
+  }
+  public void div(int a,int b)
+  {
+    System.out.println("Division "+(a/b));
+  }
+  public int exponentiation(int a,int b)
+  {
+    if(b==0)
+    {
+      return 1;
+    }return a*exponentiation(a,b-1);
+  }
+  public void display()
+  {
+    System.out.println("1.Sum");
+    System.out.println("2.Sub");
+    System.out.println("3.mul");
+    System.out.println("4.div");
+    System.out.println("5.pow");
+  }
+}
+class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    caluclator obj = new caluclator();
+    obj.display();
+    int a=sc.nextInt();
+    int b=sc.nextInt();
+    int option = sc.nextInt();
+    if(option==1)
+    {
+    obj.sum(a,b);
+    }else if(option==2)
+    {
+      obj.sub(a,b);
+    }else if(option==3)
+    {
+      obj.mul(a,b);
+    }else if(option==4)
+    {
+      obj.div(a,b);
+    }else if(option==5){
+      int res = obj.exponentiation(a,b);
+      System.out.println("Power: "+res);
+    }else{
+      System.out.println("Invalid option");
     }
+  }
 }
